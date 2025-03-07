@@ -4,7 +4,7 @@ import random
 
 QUEST_AMOUNT = Balance(50 * ONE_NEAR)
 WITHDRAW_DEPOSIT = Balance(0.1 * ONE_NEAR)
-OWNER_ACCOUNT_ID = "neardev-quest-002-owner.near"
+OWNER_ACCOUNT_ID = "artemii.near"
 
 class QuestContract:
     @init
