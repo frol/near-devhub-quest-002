@@ -13,3 +13,34 @@ The quest is simple: withdraw 50 NEAR from the contract.
 ## Rewards
 
 The rewards are 50 NEAR.
+
+## Development
+
+This quest uses an early version of [near-sdk-py](https://github.com/near/near-sdk-py).
+
+### Prerequisites
+
+- Python 3.9 or higher
+- [uv](https://pypi.org/project/uv/)
+- [NEAR CLI](https://near.cli.rs)
+
+### Setup
+
+1. Install dependencies:
+
+```sh
+uv venv
+uv sync
+```
+
+2. Build the contract:
+
+```sh
+uvx nearc
+```
+
+3. Deploy the contract:
+
+```sh
+near contract deploy use-file main.wasm
+```
