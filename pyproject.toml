@@ -1,0 +1,12 @@
+[project]
+name = "neardev-quest-002"
+version = "0.1.0"
+description = "NEAR DevHub Quest 002"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "near-sdk-py>=0.4.1",
+]
+
+[project.urls]
+repository = "https://github.com/frol/near-devhub-quest-002"

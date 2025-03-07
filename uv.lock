@@ -1,0 +1,23 @@
+version = 1
+revision = 1
+requires-python = ">=3.11"
+
+[[package]]
+name = "near-sdk-py"
+version = "0.4.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0f/6c/07abee6e42fd8cfd78173efd5de11a09e20585233f167b74348e6d7d6878/near_sdk_py-0.4.1.tar.gz", hash = "sha256:b23f518683e037f77b3aae64b262833547c9c72c3b24e976d4af70b57706ee4f", size = 67834 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a9/6f/75f6596b7ca4cfdb202a12d08fae5efa1f316e1177da486317ebd6663e04/near_sdk_py-0.4.1-py3-none-any.whl", hash = "sha256:9f8b312f6fe6390d11613ec7c59ea1837f89938b1055d319494061c299c171d6", size = 32912 },
+]
+
+[[package]]
+name = "neardev-quest-002"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "near-sdk-py" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "near-sdk-py", specifier = ">=0.4.1" }]
