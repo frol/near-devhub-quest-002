@@ -16,7 +16,7 @@ The rewards are 50 NEAR.
 
 ## Development
 
-This quest uses an early version of [near-sdk-py](https://github.com/near/near-sdk-py).
+This quest uses an early version of [near-sdk-py](https://github.com/r-near/near-sdk-py).
 
 ### Prerequisites
 
