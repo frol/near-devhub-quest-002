@@ -14,10 +14,11 @@ class QuestContract:
             near.panic_utf8("Quest contract already initialized")
 
         deployment_time = Context.block_timestamp()
-        Log.info(f"Deployment time: {deployment_time}")
         # TODO(near-sdk-py): Consider automatically seeding the random number generator for every function call
-        activation_time = deployment_time + (5 * 60 * 1000000000)
-
+        random.seed(int.from_bytes(near.random_seed()))
+        minutes = random.randint(10, 180)
+        activation_time = deployment_time + ((24 * 60 + minutes) * 60 * 1000000000)
+        
         Storage.set_json("activation_time", activation_time)
         Log.info(f"Quest contract initialized. Activation time: {activation_time}")
         # Oops, did I forget f"" string? No problem, I can view the activation time later
