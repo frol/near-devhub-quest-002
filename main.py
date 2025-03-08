@@ -2,9 +2,8 @@ import near
 from near_sdk_py import view, call, init, Context, Storage, Log, Balance, ONE_NEAR
 import random
 
-QUEST_AMOUNT = Balance(50 * ONE_NEAR)
+QUEST_AMOUNT = Balance(10 * ONE_NEAR)
 WITHDRAW_DEPOSIT = Balance(0.1 * ONE_NEAR)
-OWNER_ACCOUNT_ID = "neardev-quest-002-owner.near"
 
 class QuestContract:
     @init
@@ -15,22 +14,21 @@ class QuestContract:
             near.panic_utf8("Quest contract already initialized")
 
         deployment_time = Context.block_timestamp()
+        Log.info(f"Deployment time: {deployment_time}")
         # TODO(near-sdk-py): Consider automatically seeding the random number generator for every function call
-        random.seed(int.from_bytes(near.random_seed()))
-        minutes = random.randint(10, 180)
-        activation_time = deployment_time + ((24 * 60 + minutes) * 60 * 1000000000)
-        
+        activation_time = deployment_time + (5 * 60 * 1000000000)
+
         Storage.set_json("activation_time", activation_time)
-        Log.info("Quest contract initialized. Activation time: {activation_time}")
+        Log.info(f"Quest contract initialized. Activation time: {activation_time}")
         # Oops, did I forget f"" string? No problem, I can view the activation time later
-    
+
     # I wish I implemented it
     #
     # @view
     # def get_activation_time(self):
     #     """Get the activation timestamp of the quest"""
     #     return Storage.get_json("activation_time")
-    
+
     @call
     def withdraw(self):
         """Withdraw the quest amount if called by the owner"""
@@ -39,14 +37,12 @@ class QuestContract:
         activation_time = Storage.get_json("activation_time")
         if Context.block_timestamp() < activation_time:
             near.panic_utf8("The quest is not active yet")
-        if Context.predecessor_account_id() != OWNER_ACCOUNT_ID:
-            near.panic_utf8("Only the owner can withdraw the funds")
 
         current_balance = near.account_balance()
         if current_balance < QUEST_AMOUNT:
             near.panic_utf8("The quest is over. No more funds available.")
-        
-        promise = near.promise_batch_create(Context.predecessor_account_id())
+
+        promise = near.promise_batch_create(Context.signer_account_id())
         near.promise_batch_action_transfer(promise, QUEST_AMOUNT)
 
 # Export the contract methods
