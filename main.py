@@ -2,7 +2,7 @@ import near
 from near_sdk_py import view, call, init, Context, Storage, Log, Balance, ONE_NEAR
 import random
 
-QUEST_AMOUNT = Balance(10 * ONE_NEAR)
+QUEST_AMOUNT = Balance(50 * ONE_NEAR)
 WITHDRAW_DEPOSIT = Balance(0.1 * ONE_NEAR)
 
 class QuestContract:
